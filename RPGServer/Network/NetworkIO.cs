@@ -7,17 +7,29 @@ using System.Net.Sockets;
 /// </summary>
 namespace RPGServer.NetWork
 {
-    class SendBuffer
+    struct SendBuffer
     {
-        public bool IsSendOK { get; set; }
-        public byte[] Data { get; set; }
-        public uint SendOffset { get; set; }
+        public bool IsSendOK;
+        public byte[] Data;
+        public uint SendOffset;
+        public SendBuffer(byte[] data)
+        {
+            IsSendOK = false;
+            Data = data;
+            SendOffset = 0;
+        }
     }
-    class ReceiveBuffer
+    struct ReceiveBuffer
     {
-        public bool IsReceiveOK { get; set; }
-        public byte[] Data { get; set; }
-        public uint ReceiveOffset { get; set; }
+        public bool IsReceiveOK;
+        public byte[] Data;
+        public uint ReceiveOffset;
+        public ReceiveBuffer(byte[] data)
+        {
+            IsReceiveOK = true;
+            Data = data;
+            ReceiveOffset = 0;
+        }
     }
     class IOObject
     {
